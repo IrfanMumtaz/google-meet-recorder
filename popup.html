@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MeetingAI Notes</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>MeetingAI Notes</h1>
+    </header>
+
+    <div id="status-section">
+      <div id="status-idle" class="status-card">
+        <div class="status-dot idle"></div>
+        <span>No active meeting — join a Google Meet to start</span>
+      </div>
+
+      <div id="status-detected" class="status-card" style="display:none">
+        <div class="status-dot detected"></div>
+        <div class="status-info">
+          <span class="status-label">Meeting detected — waiting for audio</span>
+          <span id="detected-title" class="status-title"></span>
+        </div>
+        <button id="btn-skip" class="btn btn-secondary">Don't record</button>
+      </div>
+
+      <div id="status-recording" class="status-card" style="display:none">
+        <div class="status-dot recording"></div>
+        <div class="status-info">
+          <span class="status-label">Recording</span>
+          <span id="recording-title" class="status-title"></span>
+          <span id="recording-duration" class="status-duration">00:00:00</span>
+        </div>
+        <div class="status-actions">
+          <button id="btn-stop" class="btn btn-danger">Stop &amp; save</button>
+          <button id="btn-discard" class="btn btn-secondary">Discard</button>
+        </div>
+      </div>
+
+      <div id="status-skipped" class="status-card" style="display:none">
+        <div class="status-dot idle"></div>
+        <div class="status-info">
+          <span class="status-label">Not recording this meeting</span>
+          <span id="skipped-title" class="status-title"></span>
+        </div>
+        <button id="btn-resume" class="btn btn-primary">Record</button>
+      </div>
+
+      <div id="status-saving" class="status-card" style="display:none">
+        <div class="status-dot detected"></div>
+        <span>Saving files...</span>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h2>Settings</h2>
+      <div class="setting-row">
+        <label for="subfolder">Download folder name</label>
+        <input type="text" id="subfolder" placeholder="MeetingNotes">
+        <small>Files save to: Downloads/<span id="folder-preview">MeetingNotes</span>/</small>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
